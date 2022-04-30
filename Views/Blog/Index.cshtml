@@ -1,0 +1,28 @@
+@model IEnumerable<Blog>
+
+@{
+    ViewData["Title"] = "View Blogs";
+}
+
+<h1>Blogs</h1>
+
+<div class="blog-wrapper">
+
+
+@foreach (var blog in Model) {
+
+<div class="card" style="width: 18rem;">
+  <img src="https://www.texasheart.org/wp-content/uploads/2018/01/masthead-journal.jpg" class="card-img-top" alt="@blog.BlogTitle">
+  <div class="card-body">
+    <h5 class="card-title">@blog.BlogTitle</h5>
+    <p class="card-text">@blog.BlogContent</p>
+    <p>Created On: @blog.BlogTimeStamp</p>
+    @if (blog?.User != null) {
+        <p>Created By: @(blog?.User?.GuestUser ?? blog?.User?.Email)</p>
+    }
+  </div>
+</div>
+
+}
+
+</div>

@@ -1,0 +1,51 @@
+@model IEnumerable<Blog>
+
+@{
+    ViewData["Title"] = "Manage Blogs";
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <td>
+                
+            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.BlogTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BlogContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BlogTimeStamp)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img class ="manage-photo" src="https://www.texasheart.org/wp-content/uploads/2018/01/masthead-journal.jpg">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlogTimeStamp)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BlogId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BlogId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BlogId">Delete</a>
+            </td> 
+        </tr>
+}
+    </tbody>
+</table>
